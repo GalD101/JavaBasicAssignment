@@ -2,7 +2,9 @@
 public class FindWordsContaining {
     public static boolean containChar(String word, char x) {
         for (int i = 0; i < word.length(); i++) {
-            if (word.charAt(i) == x) { return true; }
+            if (word.charAt(i) == x) {
+                return true;
+            }
         }
         return false;
     }
@@ -12,7 +14,7 @@ public class FindWordsContaining {
             return;
         }
         // TODO check validity!!
-        String [] words = new String[args.length - 1];
+        String[] words = new String[args.length - 1];
         for (int i = 0; i < words.length; i++) {
             words[i] = args[i];
         }
