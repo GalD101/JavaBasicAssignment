@@ -14,19 +14,24 @@ public class CountPairs {
             return;
         }
 
+        // Check input validity.
         for (String arg : args) {
-            if (!arg.matches("^[+-]?\\d+$")) {
-                System.out.println("Invalid input");
-                return;
+            for (int i = 0; i < arg.length(); i++) {
+                if (!isValidInteger(arg)) {
+                    System.out.println("Invalid input");
+                    return;
+                }
             }
         }
 
         int[] nums = new int[args.length - 1];
         int target;
+        String targetStr = removePrependingSigns(args[args.length - 1]);
+
         try {
-            target = Integer.parseInt(args[args.length - 1]);
-            for (int i = 0; i < args.length - 1; i++) {
-                nums[i] = Integer.parseInt(args[i]);
+            target = Integer.parseInt(targetStr);
+            for (int i = 0; i < nums.length; i++) {
+                nums[i] = Integer.parseInt(removePrependingSigns(args[i]));
             }
         } catch (NumberFormatException e) {
             System.out.println("Invalid input");
@@ -42,6 +47,46 @@ public class CountPairs {
                 }
             }
         }
+
         System.out.println(numOfPairs);
+    }
+
+    /**
+     * Checks if the string s is in a valid integer representation.
+     *
+     * @param str  the string representing the number.
+     * @return true iff the string is an integer.
+     */
+    public static boolean isValidInteger(String str) {
+        while ((str.charAt(0) == '-') || (str.charAt(0) == '+')) {
+            str = str.substring(1, str.length());
+        }
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) < '0' || str.charAt(i) > '9') {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Removes all redundant plus/minus signs prepending the string.
+     *
+     * @param str  the string representing the number.
+     * @return the string representing the number only with
+     *         necessary prepending signs.
+     */
+    public static String removePrependingSigns(String str) {
+        boolean isNeg = false;
+
+        // Remove prepending minus/plus sign.
+        while ((str.charAt(0) == '-') || (str.charAt(0) == '+')) {
+            if (str.charAt(0) == '-') {
+                isNeg = !isNeg;
+            }
+            str = str.substring(1, str.length());
+        }
+
+        return isNeg ? '-' + str : str;
     }
 }
