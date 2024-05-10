@@ -14,8 +14,8 @@ public class CountPairs {
             return;
         }
 
-        for (int i = 0; i < args.length; i++) {
-            if (!args[i].matches("^[+-]?\\d+$")) {
+        for (String arg : args) {
+            if (!arg.matches("^[+-]?\\d+$")) {
                 System.out.println("Invalid input");
                 return;
             }
