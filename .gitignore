@@ -31,5 +31,5 @@ bin/
 biuoop.xml
 *.iml
 .idea
-
+*.class
 ass*.zip
