@@ -22,9 +22,15 @@ public class CountPairs {
         }
 
         int[] nums = new int[args.length - 1];
-        int target = Integer.parseInt(args[args.length - 1]);
-        for (int i = 0; i < args.length - 1; i++) {
-            nums[i] = Integer.parseInt(args[i]);
+        int target;
+        try {
+            target = Integer.parseInt(args[args.length - 1]);
+            for (int i = 0; i < args.length - 1; i++) {
+                nums[i] = Integer.parseInt(args[i]);
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input");
+            return;
         }
 
         int numOfPairs = 0;
