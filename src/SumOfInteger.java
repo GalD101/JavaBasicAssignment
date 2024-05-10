@@ -21,7 +21,7 @@ public class SumOfInteger {
 
         // Remove prepending minus/plus sign (still a valid number).
         while ((num.charAt(0) == '-') || (num.charAt(0) == '+')) {
-            num = num.substring(1);
+            num = num.substring(1, num.length());
         }
 
         if (!isNumber(num)) {
@@ -44,7 +44,7 @@ public class SumOfInteger {
             return firstDigit;
         }
 
-        String sCut = s.substring(1);
+        String sCut = s.substring(1, s.length());
         return recursiveSum(sCut) + firstDigit;
     }
     /**
