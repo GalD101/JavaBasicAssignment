@@ -1,4 +1,5 @@
 // 322558297 Gal Dali
+
 /**
  * This class counts pairs of integers from input arguments whose sum is less than a target value.
  */
@@ -75,9 +76,9 @@ public class CountPairs {
     /**
      * Removes all redundant plus/minus signs prepending the string.
      *
-     * @param str  the string representing the number.
+     * @param str the string representing the number.
      * @return the string representing the number only with
-     *         necessary prepending signs.
+     * necessary prepending signs.
      */
     public static String removePrependingSigns(String str) {
         boolean isNeg = false;
