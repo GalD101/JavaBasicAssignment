@@ -54,11 +54,14 @@ public class CountPairs {
     /**
      * Checks if the string s is in a valid integer representation.
      *
-     * @param str  the string representing the number.
+     * @param str the string representing the number.
      * @return true iff the string is an integer.
      */
     public static boolean isValidInteger(String str) {
         while ((str.charAt(0) == '-') || (str.charAt(0) == '+')) {
+            if (str.length() == 1) {
+                return false;
+            }
             str = str.substring(1, str.length());
         }
         for (int i = 0; i < str.length(); i++) {
