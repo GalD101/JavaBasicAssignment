@@ -4,6 +4,34 @@
  */
 public class SumOfInteger {
     /**
+     * Checks if the argument supplied is valid
+     * and prints the sum of the digits of the given number.
+     * @param args  the array of arguments sent by the user
+     *              representing the number the user chose
+     */
+    public static void main(String[] args) {
+
+        // Accept one and only one argument.
+        if (args.length != 1) {
+            System.out.println("Invalid input");
+            return;
+        }
+
+        String num = args[0];
+
+        // Remove prepending minus/plus sign (still a valid number).
+        while ((num.charAt(0) == '-') || (num.charAt(0) == '+')) {
+            num = num.substring(1);
+        }
+
+        if (!isNumber(num)) {
+            System.out.println("Invalid input");
+            return;
+        }
+
+        System.out.println(recursiveSum(num));
+    }
+    /**
      * Calculates the sum of the digits of the given number (s).
      * s is represented as a string and is assumed to be valid
      *
@@ -11,52 +39,26 @@ public class SumOfInteger {
      * @return the sum of the digits in the number.
      */
     public static int recursiveSum(String s) {
-        // TODO check validity of input! (Don't use try catch to determine flow!)
-        char firstChar = s.charAt(0);
+        int firstDigit = (int) (s.charAt(0) - '0');
         if (s.length() == 1) {
-            return (int)(firstChar - '0');
+            return firstDigit;
         }
+
         String sCut = s.substring(1);
-        return recursiveSum(sCut) + (int)(firstChar - '0');
+        return recursiveSum(sCut) + firstDigit;
     }
-
-    public static boolean isNumeric(String s) {
-        // Remove prepending minus sign(s).
-        if (s.length() == 0) { return false; }
-        while ((s.charAt(0) == '-') || (s.charAt(0) == '+')) {
-            s = s.substring(1);
-        }
-
-        // Make sure every character is a valid decimal digit.
+    /**
+     * Checks if the string s is in a valid integer representation.
+     *
+     * @param s  the string representing the number.
+     * @return true iff the string is an integer.
+     */
+    public static boolean isNumber(String s) {
         for (int i = 0; i < s.length(); i++) {
             if ((s.charAt(i) < '0') || (s.charAt(i) > '9')) {
                 return false;
             }
         }
         return true;
-    }
-
-    /**
-     * Checks if the argument supplied is valid
-     * and prints the sum of the digits of the given number.
-     * @param args  the array of arguments sent by the user
-     *              representing the number the user chose
-     */
-    public static void main(String[] args) {
-        if (args.length != 1) {
-            System.out.println("Invalid input");
-            return;
-        }
-
-        String num = args[0];
-        if (!isNumeric(num)) {
-            System.out.println("Invalid input");
-            return;
-        }
-
-        while ((num.charAt(0) == '-') || (num.charAt(0) == '+')) {
-            num = num.substring(1);
-        }
-        System.out.println(recursiveSum(num));
     }
 }

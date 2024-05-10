@@ -4,22 +4,6 @@
  */
 public class FindWordsContaining {
     /**
-     * Checks if the string word contains the given character x.
-     *
-     * @param  word  the string to examine.
-     * @param  x     the character to look for.
-     * @return true iff word contains x, false otherwise
-     */
-    public static boolean containChar(String word, char x) {
-        for (int i = 0; i < word.length(); i++) {
-            if (word.charAt(i) == x) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
      * Takes a list of words and character x
      * and prints only the words containing the character x.
      *
@@ -32,7 +16,6 @@ public class FindWordsContaining {
             return;
         }
 
-        // TODO check validity!!
         String[] words = new String[args.length - 1];
         char x = args[args.length - 1].charAt(0);
         for (int i = 0; i < words.length; i++) {
@@ -44,5 +27,21 @@ public class FindWordsContaining {
                 System.out.println(word);
             }
         }
+    }
+
+    /**
+     * Checks if the string word contains the given character x.
+     *
+     * @param  word  the string to examine.
+     * @param  x     the character to look for.
+     * @return whether the word contains the character x.
+     */
+    public static boolean containChar(String word, char x) {
+        for (int i = 0; i < word.length(); i++) {
+            if (word.charAt(i) == x) {
+                return true;
+            }
+        }
+        return false;
     }
 }
